@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http } from '@angular/http'
+import { Http, RequestOptions, Headers } from '@angular/http'
 
 import 'rxjs/add/operator/map'
 
@@ -10,8 +10,17 @@ export class HttpService{
     constructor(private http:Http){}
 
     post(url, data){
+
+        const headers =new Headers({
+            'Content-type': 'application/json'
+        })
+
+        const requestOptions = new RequestOptions({
+            headers: headers
+        })
+
         return this.http
-                            .post(`${baseUrl}${url}`, JSON.stringify(data))
+                            .post(`${baseUrl}${url}`, JSON.stringify(data), requestOptions)
                             .map(res => res.json())
     }
 
