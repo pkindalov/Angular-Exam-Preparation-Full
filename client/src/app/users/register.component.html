@@ -56,11 +56,15 @@
              [(ngModel)] = "user.confirmPassword"
              #confirmPassword = "ngModel"
              required />
-              <span [hidden]="confirmPassword.valid || confirmPassword.pristine" >
-                Confirm Password is required!
+              <span [hidden]="password.value === confirmPassword.value || confirmPassword.pristine" >
+                Passwords do not match!
             </span>
         </div>
 
 
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="!registerForm.form.valid || password.value !== confirmPassword.value"
+            >Submit</button>
     </form>
