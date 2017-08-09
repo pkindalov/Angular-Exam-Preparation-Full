@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { UsersModule } from './users/users.module' 
+import { CoreModule } from './core/core.module'
 import { CarRoutesModule } from './routes.module'
 
 @NgModule({
@@ -13,6 +14,7 @@ import { CarRoutesModule } from './routes.module'
   imports: [
     BrowserModule,
     CarRoutesModule,
+    CoreModule,
     UsersModule
   ],
   providers: [],
