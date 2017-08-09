@@ -7,5 +7,10 @@ import { RegisterUser } from './register-user.model'
 })
 
 export class RegisterComponent{
-    user: RegisterUser
+    user: RegisterUser = new RegisterUser()
+
+
+    register(){
+        console.log(this.user)
+    }
 }
