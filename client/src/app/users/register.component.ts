@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { RegisterUser } from './register-user'
 
 @Component({
     selector: 'register',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core'
 })
 
 export class RegisterComponent{
-
+    user: RegisterUser
 }
