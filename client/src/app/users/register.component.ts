@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { RegisterUser } from './register-user.model'
+import { RegisterUserModel } from './register-user.model'
 import { UsersActions } from '../store/users/users.actions'
 import { NgRedux } from 'ng2-redux'
 import { IAppState } from '../store'
@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
 })
 
 export class RegisterComponent{
-    user: RegisterUser = new RegisterUser()
+    user: RegisterUserModel= new RegisterUserModel()
 
     constructor(
         private usersActions : UsersActions,
