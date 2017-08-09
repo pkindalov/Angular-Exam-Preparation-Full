@@ -1,6 +1,9 @@
 import { Component } from '@angular/core'
 import { RegisterUser } from './register-user.model'
-import { UsersService } from './users.service'
+import { UsersActions } from '../store/users/users.actions'
+import { NgRedux } from 'ng2-redux'
+import { IAppState } from '../store'
+import { Router } from '@angular/router' 
 
 @Component({
     selector: 'register',
@@ -10,12 +13,23 @@ import { UsersService } from './users.service'
 export class RegisterComponent{
     user: RegisterUser = new RegisterUser()
 
-    constructor(private usersService:UsersService){}
+    constructor(
+        private usersActions : UsersActions,
+        private router: Router,
+        private ngRedux: NgRedux<IAppState>){}
 
     register(){
-        this.usersService
-              .register(this.user)
-              .subscribe(res => console.log(res))
-            
-    }
+        this.usersActions .register(this.user)
+
+        this.ngRedux
+              .select(state => state.users.userRegistered)
+              .subscribe(userRegistered => {
+                  if(userRegistered){
+                        this.router.navigateByUrl('users/login')
+                  }
+                  
+              })
+                
+  }
+    
 }
