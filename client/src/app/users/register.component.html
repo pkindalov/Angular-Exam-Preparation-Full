@@ -9,7 +9,11 @@
              id="name" 
              name="name"
              [(ngModel)] = "user.name"
-             required>
+             #name ="ngModel"
+             required />
+            <span [hidden]="name.valid || name.pristine" >
+                Name is required!
+            </span>
         </div>
 
         <div class="form-group">
@@ -19,8 +23,12 @@
                class="form-control" 
                id="e-mail" 
                name="email"
+               #email = "ngModel"
                [(ngModel)] = "user.email"
                required />
+                <span [hidden]="email.valid || email.pristine" >
+                Email is required!
+            </span>
         </div>
 
         <div class="form-group">
@@ -31,7 +39,11 @@
              id="password" 
              name="password"
              [(ngModel)] = "user.password"
+             #password = "ngModel"
              required />
+              <span [hidden]="password.valid || password.pristine" >
+                Password is required!
+            </span>
         </div>
 
           <div class="form-group">
@@ -42,7 +54,11 @@
              id="confirmPassword" 
              name="confirmPassword"
              [(ngModel)] = "user.confirmPassword"
+             #confirmPassword = "ngModel"
              required />
+              <span [hidden]="confirmPassword.valid || confirmPassword.pristine" >
+                Confirm Password is required!
+            </span>
         </div>
 
 
