@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http'
 
 
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { CarRoutesModule } from './routes.module'
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     CarRoutesModule,
     CoreModule,
     UsersModule
