@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http'
 
+import { NgReduxModule, NgRedux } from 'ng2-redux'
+import { store, IAppState } from './store'
+
 
 import { AppComponent } from './app.component';
 import { UsersModule } from './users/users.module' 
@@ -14,6 +17,7 @@ import { CarRoutesModule } from './routes.module'
   ],
   imports: [
     BrowserModule,
+    NgReduxModule,
     HttpModule,
     CarRoutesModule,
     CoreModule,
@@ -22,4 +26,10 @@ import { CarRoutesModule } from './routes.module'
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(private ngRedux:NgRedux<IAppState>){
+    this.ngRedux.provideStore(store)
+  }
+
+}
