@@ -2,7 +2,8 @@ import { initialState } from './users.state'
 
 import {
      USER_REGISTERED,
-     USER_LOGGED_IN
+     USER_LOGGED_IN,
+     USER_LOGOUT
      } from './users.actions'
 
 function userRegistration(state, action){
@@ -25,6 +26,16 @@ function userLogin(state, action){
 
 }
 
+
+function logout(state, action){
+    return Object.assign({}, state, {
+       userAuthenticated: false,
+        token: null,
+        username: null 
+    })
+}
+
+
 export function usersReducer(state = initialState, action){
 
     switch(action.type){
@@ -32,6 +43,8 @@ export function usersReducer(state = initialState, action){
             return userRegistration(state, action)
         case USER_LOGGED_IN:
             return userLogin(state, action)    
+        case USER_LOGOUT:
+            return logout(state, action)
         default:
             return state    
     }
