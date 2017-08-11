@@ -1,5 +1,6 @@
 <div>
     <div *ngIf="authenticated">
+        <a routerLink='/cars/add'>Add Car</a>
         {{username}}
         <a href="javascript:void(0)" (click) = "logout()">Logout</a>
     </div>
