@@ -5,6 +5,7 @@ import { UsersService } from '../../users/users.service'
  
 export const USER_REGISTERED = 'users/REGISTER'
 export const USER_LOGGED_IN = 'users/LOGIN'
+export const USER_LOGOUT = 'users/LOGOUT'
 
 @Injectable()
 export class UsersActions{
@@ -35,7 +36,14 @@ export class UsersActions{
                         })
                     })
 
-    }   
+    } 
+                
+    
+    logout(){
+        this.ngRedux.dispatch({
+            type: USER_LOGOUT
+        })
+    }
 
 
 
