@@ -8,6 +8,7 @@ import { MessageHandlerComponent } from './message-handler.component'
 
 import { HttpService } from './http.service'
 import { AuthService } from './auth.service'
+import { PrivateRoute } from './private-route'
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { AuthService } from './auth.service'
     ],
     providers: [
         HttpService,
-        AuthService
+        AuthService,
+        PrivateRoute
     ],
     exports: [
         NavbarComponent,
