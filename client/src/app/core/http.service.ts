@@ -24,4 +24,13 @@ export class HttpService{
                             .map(res => res.json())
     }
 
+
+
+    get(url){
+        return this.http
+                            .get(`${baseUrl}${url}`)
+                             .map(res => res.json())
+    }
+
+
 }
