@@ -4,6 +4,7 @@ import { NgRedux } from 'ng2-redux'
 import { IAppState } from '../store/app.state'
 import { LoginUserModel } from './login-user.model'
 import { UsersActions } from '../store/users/users.actions'
+import { AuthService } from '../core/auth.service'
 
 @Component({
     selector: 'login',
@@ -17,6 +18,7 @@ export class LoginComponent{
     constructor(
         private usersActions: UsersActions,
         private router: Router,
+        private authService: AuthService,
         private ngRedux: NgRedux<IAppState>
     ){}
 
@@ -26,6 +28,8 @@ export class LoginComponent{
                .select(state => state.users)
                .subscribe(users => {
                    if(users.userAuthenticated){
+                       this.authService.authenticateUser(users.token)
+                       this.authService.saveUser(users.username)
                        this.router.navigateByUrl('')
                    }
                })
