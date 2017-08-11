@@ -9,6 +9,7 @@ import { store, IAppState } from './store'
 
 import { AppComponent } from './app.component';
 import { UsersModule } from './users/users.module' 
+import { CarsModule } from './cars/cars.module'
 import { CoreModule } from './core/core.module'
 import { CarRoutesModule } from './routes.module'
 
@@ -28,7 +29,8 @@ import { config } from './core/config'
     HttpModule,
     CarRoutesModule,
     CoreModule,
-    UsersModule
+    UsersModule,
+    CarsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
