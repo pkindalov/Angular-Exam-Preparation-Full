@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar.component'
 import { MessageHandlerComponent } from './message-handler.component'
 
 import { HttpService } from './http.service'
+import { AuthService } from './auth.service'
 
 @NgModule({
     declarations: [
@@ -17,7 +18,10 @@ import { HttpService } from './http.service'
         RouterModule,
         CommonModule
     ],
-    providers: [HttpService],
+    providers: [
+        HttpService,
+        AuthService
+    ],
     exports: [
         NavbarComponent,
         MessageHandlerComponent
