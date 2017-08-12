@@ -1,6 +1,9 @@
-<h1>Car details</h1>
+<h1>Car details
+    <button (click)="like()">Like this car</button>
+</h1>
+
 
 <div>
-    {{car.make}} - {{car.model}}
+    {{car.make}} - {{car.model}} - {{car.likes}} likes
     <img *ngIf="car.image" [src] ="car.image"  />
 </div>
