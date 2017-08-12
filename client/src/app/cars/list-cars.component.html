@@ -1,6 +1,13 @@
 <h1>List Cars:</h1>
 
 <div class="car-container">
+
+    <div>
+        <input type="text" [(ngModel)]="searchText" name="searchText" />
+        <button (click)="search()">Search</button>
+    </div>
+
+
     <div *ngIf="cars.length === 0">
         No more cars available
     </div>
