@@ -46,6 +46,15 @@ export class CarsService{
         return this.httpService.post(`cars/details/${id}/reviews/create`, review, true)
     }
 
+    mine(){
+         return this.httpService.get('cars/mine', true)
+    }
+
+
+    delete(id){
+        return this.httpService.post(`cars/delete/${id}`, {}, true)
+    }
+
 
 
 }

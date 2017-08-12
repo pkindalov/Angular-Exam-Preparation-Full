@@ -25,11 +25,12 @@ export class AddCarComponent{
         this.carsActions
                 .addCar(this.car)
               
-        this.ngRedux
+        let subscription = this.ngRedux
                 .select(state => state.cars)        
                 .subscribe(cars => {
                     if(cars.carAdded){
                         const carId = cars.carAddedId
+                        subscription.unsubscribe()
                         this.router.navigateByUrl(`/cars/details/${carId}`)
                     }
                 })
