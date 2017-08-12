@@ -4,7 +4,8 @@ import {
     ALL_CARS,
     CAR_DETAILS, 
     CAR_LIKE,
-    CAR_ADD_REVIEW
+    CAR_ADD_REVIEW,
+    CAR_ALL_REVIEWS
  } from './cars.actions'
 
 
@@ -73,6 +74,13 @@ function AddReview(state, action){
 }
 
 
+function allReviews(state, action){
+    return Object.assign({}, state, {
+        carReviews: action.reviews
+    })
+}
+
+
 
 export function carsReducer(state = initialState, action){
 
@@ -87,6 +95,8 @@ export function carsReducer(state = initialState, action){
             return carLike(state, action)    
         case CAR_ADD_REVIEW:
             return AddReview(state, action)    
+        case CAR_ALL_REVIEWS:
+            return allReviews(state, action)    
         default:
             return state
     }
