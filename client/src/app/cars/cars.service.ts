@@ -27,4 +27,9 @@ export class CarsService{
                             .get(url)
     }
 
+
+    details(id){
+        return this.httpService.get(`cars/details/${id}`, true)
+    }
+
 }
