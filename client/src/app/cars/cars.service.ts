@@ -37,8 +37,15 @@ export class CarsService{
         return this.httpService.post(`cars/details/${id}/like`, {}, true)
     }
 
+
+    allReviews(id){
+        return this.httpService.get(`cars/details/${id}/reviews`, true)
+    }
+
     submitReview(id, review){
         return this.httpService.post(`cars/details/${id}/reviews/create`, review, true)
     }
+
+
 
 }
