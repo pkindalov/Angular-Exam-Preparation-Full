@@ -32,4 +32,9 @@ export class CarsService{
         return this.httpService.get(`cars/details/${id}`, true)
     }
 
+
+    like(id){
+        return this.httpService.post(`cars/details/${id}/like`, {}, true)
+    }
+
 }
