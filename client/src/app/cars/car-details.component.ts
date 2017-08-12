@@ -5,6 +5,8 @@ import { CarsActions } from '../store/cars/cars.actions'
 import { NgRedux } from 'ng2-redux'
 import { IAppState } from '../store/app.state'
 
+import { CarReviewModel } from './car-review.model'
+
 
 @Component({
     selector: 'car-details',
@@ -12,9 +14,9 @@ import { IAppState } from '../store/app.state'
 })
 
 export class CarDetailsComponent implements OnInit{
-
     carId: number = 0
     car: object = {}
+    review: CarReviewModel = new CarReviewModel(5) 
 
     constructor(
        private route: ActivatedRoute,
@@ -39,6 +41,11 @@ export class CarDetailsComponent implements OnInit{
 
     like(){
         this.carsActions.like(this.car['id'])
+    }
+
+    
+    submitReview(){
+        this.carsActions.submitReview(this.car['id'], this.review)
     }
 
 
