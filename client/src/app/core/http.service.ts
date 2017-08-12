@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core'
 import { Http, RequestOptions, Headers } from '@angular/http'
 
+import { AuthService } from './auth.service'
+
 import 'rxjs/add/operator/map'
 
 const baseUrl = 'http://localhost:5000/'
+const getMethod = "get"
+const postMethod = "post"
 
 @Injectable()
 export class HttpService{
-    constructor(private http:Http){}
+    constructor(
+        private http:Http,
+        private authService: AuthService
+    ){}
 
-    post(url, data){
+    post(url, data, authenticated = false){
 
-        const headers =new Headers({
-            'Content-type': 'application/json'
-        })
-
-        const requestOptions = new RequestOptions({
-            headers: headers
-        })
+        const requestOptions = this.getRequestOptions(postMethod, authenticated)
+        
 
         return this.http
                             .post(`${baseUrl}${url}`, JSON.stringify(data), requestOptions)
@@ -26,10 +28,33 @@ export class HttpService{
 
 
 
-    get(url){
+    get(url, authenticated = false){
+
+         const requestOptions = this.getRequestOptions(getMethod, authenticated)
+
         return this.http
-                            .get(`${baseUrl}${url}`)
+                            .get(`${baseUrl}${url}`, requestOptions)
                              .map(res => res.json())
+    }
+
+
+    private getRequestOptions(method, authenticated){
+         const headers =new Headers()
+
+         if(method !== getMethod){
+            headers.append('Content-type', 'application/json')
+         }
+
+         if(authenticated){
+             const token = this.authService.getToken()
+             headers.append('Authorization', `bearer ${token}`)
+         }
+
+        const requestOptions = new RequestOptions({
+            headers: headers
+        })
+
+        return requestOptions
     }
 
 
