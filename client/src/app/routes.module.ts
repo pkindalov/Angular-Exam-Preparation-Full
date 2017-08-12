@@ -5,6 +5,7 @@ import { LoginComponent } from './users/login-component'
 import { AddCarComponent } from './cars/add-car.component'
 import { StatsComponent } from './stats/stats.component'
 import { PrivateRoute } from './core/private-route'
+import { ListCarComponent} from './cars/list-cars.component'
 
 const routes: Routes = [
     { path: '', component: StatsComponent} ,
@@ -14,7 +15,9 @@ const routes: Routes = [
          path: 'cars/add', 
          component: AddCarComponent,
           canActivate: [PrivateRoute]
-     }
+     },
+
+    { path: 'cars/all', component: ListCarComponent } 
       
     
 ]
