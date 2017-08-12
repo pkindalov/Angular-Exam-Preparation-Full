@@ -4,6 +4,45 @@
 
 
 <div>
-    {{car.make}} - {{car.model}} - {{car.likes}} likes
+  <h2>  {{car.make}} - {{car.model}} - {{car.likes}} likes</h2>
     <img *ngIf="car.image" [src] ="car.image"  />
+</div>
+
+
+
+<div>
+    <h1>Add car:</h1>
+
+    <form #reviewForm="ngForm" (submit)="submitReview()">
+        
+
+           <div class="form-group">
+            <label for="rating">Rating:</label>
+            <select 
+               class="form-control" 
+               id="rating" 
+               name="rating"
+               [(ngModel)] = "review.rating">
+               <option *ngFor="let number of [1,2,3,4,5]" [value]="number">{{number}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea 
+               class="form-control" 
+               id="comment" 
+               name="comment"
+               [(ngModel)] = "review.comment">
+            </textarea>
+        </div>
+
+
+            <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="!reviewForm.form.valid"
+            >Submit</button>
+    </form>
+
 </div>
