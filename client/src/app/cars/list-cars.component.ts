@@ -65,7 +65,7 @@ export class ListCarComponent implements OnInit{
     }
     
     private getUrl(page){
-        let url = `cars/all?page=${this.page}`
+        let url = `cars/all?page=${page}`
 
         if(this.searchText){
             url += `&search=${this.searchText}`
