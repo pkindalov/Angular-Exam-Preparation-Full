@@ -8,8 +8,10 @@ export const ADD_CAR = 'cars/ADD'
 export const ALL_CARS = 'cars/ALL'
 export const CAR_DETAILS = 'cars/DETAILS'
 export const CAR_LIKE = 'cars/LIKE'
+export const MINE_CARS = 'cars/MINE'
 export const CAR_ALL_REVIEWS= 'cars/ALL_REVIEWS'
 export const CAR_ADD_REVIEW = 'cars/ADD_REVIEW'
+export const CAR_DELETE = 'cars/DELETE'
 
  
 @Injectable()
@@ -67,6 +69,18 @@ export class CarsActions{
                 } )
     }
 
+
+    mine(){
+        this.carsService.mine()
+                .subscribe(cars => {
+                    this.ngRedux.dispatch({
+                        type: MINE_CARS,
+                        cars
+                    })
+                })
+    }
+
+
     allReviews(id){
         this.carsService.allReviews(id)
                 .subscribe(reviews => {
@@ -85,6 +99,19 @@ export class CarsActions{
                                             type: CAR_ADD_REVIEW,
                                             result
                                           })
+                                      })
+    }
+
+
+    delete(id){
+        this.carsService.delete(id)
+                                      .subscribe(result => {
+                                         
+                                            this.ngRedux.dispatch({
+                                                type: CAR_DELETE,
+                                                result,
+                                                id
+                                            })
                                       })
     }
 
