@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router'
 
 import { AddCarComponent } from './add-car.component'
 import { ListCarComponent } from './list-cars.component'
+import { CarDetailsComponent } from './car-details.component'
 import { CarsActions } from '../store/cars/cars.actions'
 import { CarsService } from './cars.service'
 
@@ -12,7 +13,8 @@ import { CarsService } from './cars.service'
 @NgModule({
     declarations: [
         AddCarComponent,
-        ListCarComponent
+        ListCarComponent,
+        CarDetailsComponent
     ],
     providers: [
         CarsActions,
