@@ -7,11 +7,14 @@ import { StatsComponent } from './stats/stats.component'
 import { PrivateRoute } from './core/private-route'
 import { ListCarComponent} from './cars/list-cars.component'
 import { CarDetailsComponent } from './cars/car-details.component'
+import { ProfileComponent } from './users/profile.component'
 
 const routes: Routes = [
     { path: '', component: StatsComponent} ,
     { path: 'users/register', component: RegisterComponent  },
     { path: 'users/login', component: LoginComponent },
+    { path: 'users/profile', component: ProfileComponent},
+    
     {
          path: 'cars/add', 
          component: AddCarComponent,
