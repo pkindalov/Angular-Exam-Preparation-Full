@@ -9,7 +9,7 @@ export function statsReducer(state = initialState, action){
 
         return Object.assign({}, state, {
             users: stats.users,
-            cars: state.cars
+            cars: stats.cars
         })
     }
 
