@@ -4,8 +4,10 @@ import {
     ALL_CARS,
     CAR_DETAILS, 
     CAR_LIKE,
+    MINE_CARS,
     CAR_ADD_REVIEW,
-    CAR_ALL_REVIEWS
+    CAR_ALL_REVIEWS,
+    CAR_DELETE
  } from './cars.actions'
 
 
@@ -81,6 +83,36 @@ function allReviews(state, action){
 }
 
 
+function carDelete(state, action){
+
+    const result = action.result
+
+    if(result.success){
+        const id = action.id
+        const carIndex = state.myCars.findIndex(c => c.id === id)
+
+        if(carIndex >= 0){
+            const myCars = state.myCars.slice(0)
+            myCars.splice(carIndex, 1)
+            return Object.assign({}, state, {
+                myCars
+            })
+        }
+    }
+
+
+    return state
+}
+
+
+
+function mineCars(state, action){
+    return Object.assign({}, state, {
+        myCars: action.cars
+    })
+}
+
+
 
 export function carsReducer(state = initialState, action){
 
@@ -97,6 +129,10 @@ export function carsReducer(state = initialState, action){
             return AddReview(state, action)    
         case CAR_ALL_REVIEWS:
             return allReviews(state, action)    
+        case CAR_DELETE:
+            return carDelete(state, action)    
+        case MINE_CARS:
+            return mineCars(state, action)    
         default:
             return state
     }
