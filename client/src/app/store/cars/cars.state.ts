@@ -1,11 +1,13 @@
 export interface ICarsState{
     carAdded: boolean,
     carAddedId: number,
-    allCars: Array<object>
+    allCars: Array<object>,
+    carDetails: object
 }
 
 export const initialState: ICarsState = {
     carAdded: false,
     carAddedId:  null,
-    allCars: []
+    allCars: [],
+    carDetails: {}
 }
