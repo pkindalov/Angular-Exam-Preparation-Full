@@ -26,9 +26,9 @@ export class CarsActions{
                 })
     }
 
-    allCars(page = 1){
+    allCars(page = 1, search = null){
         this.carsService
-                .allCars(page)
+                .allCars(page, search)
                 .subscribe(cars => {
                     this.ngRedux.dispatch({
                         type: ALL_CARS,
