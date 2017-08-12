@@ -17,6 +17,7 @@ export class CarDetailsComponent implements OnInit{
     carId: number = 0
     car: object = {}
     review: CarReviewModel = new CarReviewModel(5) 
+    reviews: Array<object>  = []
 
     constructor(
        private route: ActivatedRoute,
@@ -31,10 +32,17 @@ export class CarDetailsComponent implements OnInit{
                     const id = params['id']
                    
                     this.carsActions.details(id)
-                    this.ngRedux.select(state => state.cars.carDetails)
-                                             .subscribe(car => {
-                                                this.car = car
+                     this.carsActions.allReviews(id)      
+
+                    this.ngRedux.select(state => state.cars)
+                                             .subscribe(cars => {
+                                                 this.car  = cars.carDetails
+                                                 this.reviews = cars.carReviews
                                              })
+                   
+                   
+                               
+
                 })
     }
 
