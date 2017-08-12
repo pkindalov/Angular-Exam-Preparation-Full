@@ -6,6 +6,7 @@ import { IAppState } from '../app.state'
 
 export const ADD_CAR = 'cars/ADD'
 export const ALL_CARS = 'cars/ALL'
+export const CAR_DETAILS = 'cars/DETAILS'
 
 @Injectable()
 export class CarsActions{
@@ -37,4 +38,18 @@ export class CarsActions{
                 })
         
     }
+
+
+    details(id){
+        this.carsService
+                .details(id)
+                .subscribe(car => {
+                    this.ngRedux.dispatch({
+                        type: CAR_DETAILS,
+                        car
+                    })
+                })
+    }
+
+
 }
