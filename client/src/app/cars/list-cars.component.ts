@@ -11,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router'
 
 export class ListCarComponent implements OnInit{
     
-    page = 1
+    page: number = 1
+    searchText: string = ''
     cars: Array<object> = []
 
     constructor(
@@ -27,7 +28,8 @@ export class ListCarComponent implements OnInit{
               .queryParams
               .subscribe(params => {
                 this.page = +params['page'] || 1
-                this.carsActions.allCars(this.page)
+                this.searchText= params['search']
+                this.carsActions.allCars(this.page, this.searchText)
                 this.ngRedux.select(state => state.cars.allCars)
                                             .subscribe(cars => this.cars = cars)
        })
@@ -36,12 +38,20 @@ export class ListCarComponent implements OnInit{
     }    
 
 
+
+    search(){
+        this.router.navigateByUrl(`cars/all?search=${this.searchText}`)
+    }
+
+
+
     prevPage(){
         if(this.page === 1){
             return
         }
 
-        this.router.navigateByUrl(`cars/all?page=${this.page - 1}`)
+        const url = this.getUrl(this.page - 1)
+        this.router.navigateByUrl(url)
  
     }
 
@@ -50,9 +60,19 @@ export class ListCarComponent implements OnInit{
             return
         }
 
-        this.router.navigateByUrl(`cars/all?page=${this.page +1}`)
+         const url = this.getUrl(this.page + 1)
+        this.router.navigateByUrl(url)
     }
     
+    private getUrl(page){
+        let url = `cars/all?page=${this.page}`
+
+        if(this.searchText){
+            url += `&search=${this.searchText}`
+        }
+
+        return url
+    }
 
 
 }
