@@ -6,7 +6,8 @@
 
     <span *ngIf="authenticated">
         <a routerLink='/cars/add'>Add Car</a>
-        {{username}}
+        <a routerLink='/users/profile'>{{username}}</a>
+        
         <a href="javascript:void(0)" (click) = "logout()">Logout</a>
     </span>
     <span *ngIf="!authenticated">
