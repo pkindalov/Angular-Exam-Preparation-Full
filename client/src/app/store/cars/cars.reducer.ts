@@ -1,5 +1,5 @@
 import { initialState } from './cars.state'
-import { ADD_CAR, ALL_CARS, CAR_DETAILS } from './cars.actions'
+import { ADD_CAR, ALL_CARS, CAR_DETAILS, CAR_LIKE } from './cars.actions'
 
 
 
@@ -33,6 +33,25 @@ function carDetails(state, action){
 }
 
 
+function carLike(state, action){
+
+    if(action.result.success){
+        const currentCarLikes = state.carDetails.likes
+        const carDetails = Object.assign({}, state.carDetails, {
+            likes: currentCarLikes + 1
+        })
+    
+        return Object.assign({}, state, {
+            carDetails
+        })
+
+    }
+
+    return state
+
+}
+
+
 
 export function carsReducer(state = initialState, action){
 
@@ -43,6 +62,8 @@ export function carsReducer(state = initialState, action){
             return allCars(state, action)
         case CAR_DETAILS:
             return carDetails(state, action)    
+        case CAR_LIKE:
+            return carLike(state, action)    
         default:
             return state
     }
