@@ -8,6 +8,7 @@ export const ADD_CAR = 'cars/ADD'
 export const ALL_CARS = 'cars/ALL'
 export const CAR_DETAILS = 'cars/DETAILS'
 export const CAR_LIKE = 'cars/LIKE'
+export const CAR_ADD_REVIEW = 'cars/ADD_REVIEW'
  
 @Injectable()
 export class CarsActions{
@@ -62,6 +63,17 @@ export class CarsActions{
                         result
                    })
                 } )
+    }
+
+
+    submitReview(id, review){
+        this.carsService.submitReview(id, review)
+                                      .subscribe(result => {
+                                          this.ngRedux.dispatch({
+                                            type: CAR_ADD_REVIEW,
+                                            result
+                                          })
+                                      })
     }
 
 
