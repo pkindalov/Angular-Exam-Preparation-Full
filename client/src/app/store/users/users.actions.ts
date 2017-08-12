@@ -6,6 +6,7 @@ import { UsersService } from '../../users/users.service'
 export const USER_REGISTERED = 'users/REGISTER'
 export const USER_LOGGED_IN = 'users/LOGIN'
 export const USER_LOGOUT = 'users/LOGOUT'
+// export const USER_PROFILE = 'users/PROFILE'
 
 @Injectable()
 export class UsersActions{
@@ -44,6 +45,17 @@ export class UsersActions{
             type: USER_LOGOUT
         })
     }
+
+
+    // profile(){
+    //     this.usersService.profile()
+    //           .subscribe(profile => {
+    //            this.ngRedux.dispatch({
+    //                type: USER_PROFILE,
+    //                profile
+    //            })
+    //           })
+    // }
 
 
 

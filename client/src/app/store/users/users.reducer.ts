@@ -3,7 +3,8 @@ import { initialState } from './users.state'
 import {
      USER_REGISTERED,
      USER_LOGGED_IN,
-     USER_LOGOUT
+     USER_LOGOUT,
+    //  USER_PROFILE
      } from './users.actions'
 
 function userRegistration(state, action){
@@ -36,6 +37,14 @@ function logout(state, action){
 }
 
 
+// function userProfile(state, action){
+//     // console.log(action)
+//     return Object.assign({}, state, {
+//         profile:  action.profile
+//     })
+// }
+
+
 export function usersReducer(state = initialState, action){
 
     switch(action.type){
@@ -45,6 +54,8 @@ export function usersReducer(state = initialState, action){
             return userLogin(state, action)    
         case USER_LOGOUT:
             return logout(state, action)
+        // case USER_PROFILE:
+        //     return userProfile(state, action)    
         default:
             return state    
     }
