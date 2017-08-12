@@ -45,4 +45,14 @@
             >Submit</button>
     </form>
 
+
+<div>
+    <div *ngFor="let review of reviews">
+        {{review.rating}} - <span *ngIf="review.comment"> - {{review.comment}}</span>
+
+    </div>
+</div>
+
+
+
 </div>
