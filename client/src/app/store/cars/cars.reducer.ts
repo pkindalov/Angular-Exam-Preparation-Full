@@ -1,5 +1,11 @@
 import { initialState } from './cars.state'
-import { ADD_CAR, ALL_CARS, CAR_DETAILS, CAR_LIKE } from './cars.actions'
+import { 
+    ADD_CAR, 
+    ALL_CARS,
+    CAR_DETAILS, 
+    CAR_LIKE,
+    CAR_ADD_REVIEW
+ } from './cars.actions'
 
 
 
@@ -52,6 +58,21 @@ function carLike(state, action){
 }
 
 
+function AddReview(state, action){
+    const result = action.result
+
+    if(result.success){
+        const review = result.review
+        const carReview = state.carReviews
+
+        return Object.assign({}, state, {
+            carReviews:  [... carReview, review]
+        })
+    }
+    return state
+}
+
+
 
 export function carsReducer(state = initialState, action){
 
@@ -64,6 +85,8 @@ export function carsReducer(state = initialState, action){
             return carDetails(state, action)    
         case CAR_LIKE:
             return carLike(state, action)    
+        case CAR_ADD_REVIEW:
+            return AddReview(state, action)    
         default:
             return state
     }
