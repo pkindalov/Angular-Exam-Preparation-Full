@@ -39,7 +39,7 @@ logout(){
     this.authService.deauthenticateUser()
     this.authService.removeUser()
 
-    this.router.navigateByUrl(' ')
+    this.router.navigateByUrl('/')
 
 }
 
