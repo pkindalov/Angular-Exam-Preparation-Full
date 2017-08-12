@@ -15,9 +15,16 @@ export class CarsService{
                             .post('cars/create', car, true)
     }
 
-    allCars(page = 1){
+    allCars(page = 1, search = null){
+
+        let url = `cars/all?page=${page}`
+
+        if(search){
+            url += `&search=${search}`
+        }
+
         return this.httpService
-                            .get(`cars/all?page=${page}`)
+                            .get(url)
     }
 
 }
