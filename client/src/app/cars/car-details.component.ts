@@ -13,6 +13,7 @@ import { IAppState } from '../store/app.state'
 
 export class CarDetailsComponent implements OnInit{
 
+    carId: number = 0
     car: object = {}
 
     constructor(
@@ -33,6 +34,11 @@ export class CarDetailsComponent implements OnInit{
                                                 this.car = car
                                              })
                 })
+    }
+
+
+    like(){
+        this.carsActions.like(this.car['id'])
     }
 
 
